@@ -40,6 +40,15 @@ This reference separates published or observed evidence from operational choices
 - **Relevant rules:** Truthful representation and no misleading marketing composition.
 - **Evidence strength:** High for Unity's own policies; medium as cross-marketplace truthfulness precedent.
 
+### Shopify App Store listing image standards
+
+- **Source:** [Clearer standards for app listing images](https://shopify.dev/changelog/posts/clearer-standards-for-app-listing-images) (2026-03-12; requirements 4.4.4 and 4.4.5, enforced from 2026-03-26)
+- **Source type:** Other marketplace official
+- **What it actually supports:** Shopify requires App Store listing images to primarily show the app's actual UI and features, disallows desktop backgrounds/browser windows and logo-only images, and requires each image to be unique. Screenshots should show different features, views, or states; duplicates and near-duplicates are disallowed.
+- **What it does NOT establish:** Fab policy, a universal image count or sequence, or a conversion increase from applying these standards to Unreal Engine plugins.
+- **Relevant rules:** Use actual product UI and behavior; make gallery images distinct; show useful product evidence that helps buyers evaluate the product.
+- **Evidence strength:** High for Shopify App Store requirements; medium as analogous guidance for Fab.
+
 ### Apple App Store assets and product-page experiments
 
 - **Source:** [App Store Asset Best Practices](https://developer.apple.com/app-store/asset-best-practices/)
@@ -99,7 +108,7 @@ This reference separates published or observed evidence from operational choices
 - **Relevant rules:** Remove competing detail when it harms comprehension; keep enough genuine product evidence to explain a utilitarian tool.
 - **Evidence strength:** Medium-high for the studied stimuli and experiments; low for direct Fab-specific design predictions.
 
-- **Source:** Wenqing Wei, [“Designing Online Product Displays: How Visual Complexity Shapes Consumer Product Attitude”](https://onlinelibrary.wiley.com/doi/full/10.1111/ijcs.70229), _International Journal of Consumer Studies_, first published 2026-07-05, DOI [10.1111/ijcs.70229](https://doi.org/10.1111/ijcs.70229).
+- **Source:** Xionghui Leng, Ping Du, Yajing He, Yulan Shi, and Wenqing Wei, [“Designing Online Product Displays: How Visual Complexity Shapes Consumer Product Attitude”](https://onlinelibrary.wiley.com/doi/10.1111/ijcs.70229), _International Journal of Consumer Studies_ 50(4), e70229, first published 2026-07-05, DOI [10.1111/ijcs.70229](https://doi.org/10.1111/ijcs.70229).
 - **Source type:** Peer-reviewed research
 - **What it actually supports:** The abstract describes one marketplace observation and three scenario-based experiments. It reports that complexity interacted with product type: lower complexity favored utilitarian products in the studied settings, while higher complexity favored hedonic products.
 - **What it does NOT establish:** That every Unreal plugin is perceived identically as utilitarian, or that low complexity always wins on Fab. It does not test Fab listings or guarantee purchase behavior.
