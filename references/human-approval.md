@@ -2,22 +2,56 @@
 
 Human Approval is a distinct human decision about a specific media set. It must not be inferred from validation results, an AI recommendation, or a general conversation response.
 
-## Keep four review states separate
+## Keep four formal review states separate
 
-1. **Technical validation** checks machine-verifiable properties such as image decoding, dimensions, file size, duplicate files, paths, order, and SHA-256 values.
-2. **AI review** may identify legibility, clarity, consistency, unsupported claims, or design concerns. It is advice only.
-3. **Design-standard review** checks the media against [media-design.md](media-design.md) and reports PASS or findings. It is not Human Approval.
-4. **Human Approval** exists only after the user has inspected the identified media and explicitly approved that media set.
+The four formal gates are Technical Validation, Media Design Review, Sales
+Optimization Review, and Human Approval:
 
-For example, `MEDIA_TECHNICAL=PASS`, `MEDIA_DESIGN_REVIEW=PASS`, and `MEDIA_HUMAN_APPROVAL=PENDING` is a valid state.
+```ts
+type ReviewState = "PASS" | "FAIL" | "PENDING" | "NOT_APPLICABLE";
+
+interface FabListingReviewState {
+  technicalValidation: ReviewState;
+  mediaDesignReview: ReviewState;
+  salesOptimizationReview: ReviewState;
+  humanApproval: ReviewState;
+}
+
+interface FabAdvisoryReview {
+  aiReview?: {
+    performed: boolean;
+    findings: string[];
+  };
+}
+```
+
+Technical Validation checks machine-verifiable properties such as image
+decoding, dimensions, file size, duplicate files, paths, order, and SHA-256
+values. Media Design Review checks the media against
+[media-design.md](media-design.md). Sales Optimization Review is `NOT_APPLICABLE`
+only when sales optimization is outside the user's goal. Human Approval exists
+only after the user has inspected the identified media and explicitly approved
+that media set.
+
+AI review is advisory, not a fifth gate. It may provide visual or content
+findings but creates no formal review state and satisfies none of the four
+formal gates. An AI review PASS or positive recommendation is not Human
+Approval. Positive AI findings may coexist with
+`HUMAN_APPROVAL=PENDING` until the user explicitly approves the identified set.
+
+For example, `MEDIA_TECHNICAL=PASS`, `MEDIA_DESIGN_REVIEW=PASS`,
+`SALES_OPTIMIZATION_REVIEW=NOT_APPLICABLE` (only when out of scope), and
+`HUMAN_APPROVAL=PENDING` is a valid state. If sales, revenue, conversion,
+discoverability, click-through, pricing, or competitive positioning is in scope,
+`SALES_OPTIMIZATION_REVIEW=NOT_APPLICABLE` is invalid.
 
 ## Preconditions for approval
 
 - Show or open the actual media being approved in its listing order. Make the target set identifiable, including the thumbnail and gallery count.
 - Ask for or receive explicit approval that clearly identifies the reviewed set. Examples: “この6枚でOK” or “このThumbnail + Gallery 5枚を承認する”. A generic “進めましょう” does not identify the media and is not approval.
-- Record the exact ordered media identity: order, relative path, and bytes or a cryptographic hash. Include product and version when the approval contract supports them.
+- Record the exact media identity for every item: relative path, order, role, dimensions, file size, and bytes or a cryptographic hash. Include product and version when the approval contract supports them.
 - Use the release tool's approval command only after the explicit human approval precondition has been satisfied. A flag such as `-ConfirmHumanApproval` confirms the human precondition to the tool; it does not authorize the agent to create that approval itself.
-- If media bytes, hash, path, or order changes after approval, treat the approval as stale. Present the changed set for review and obtain new explicit approval before recording or using approval for it.
+- If media bytes, hash, path, order, role, dimensions, or file size change after approval, treat the approval as stale. Present the changed set for review and obtain new explicit approval before recording or using approval for it.
 
 ## Never infer approval from
 

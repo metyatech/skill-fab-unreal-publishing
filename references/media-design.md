@@ -7,7 +7,10 @@ also apply [`sales-optimization.md`](sales-optimization.md) as an independent
 review. This file judges whether media works as clear, truthful imagery;
 sales-optimization judges whether the listing is the best-supported
 pre-launch treatment in the current market. Do not duplicate its full checklist
-here.
+here. When sales optimization is in scope, relative salience beside current Fab
+alternatives is evaluated by `SALES_OPTIMIZATION_REVIEW` and does not by itself
+determine `MEDIA_DESIGN_REVIEW`. Clear, truthful, readable media may therefore
+pass media design while competitive salience fails the sales review.
 
 ## Review outcome
 
@@ -17,15 +20,10 @@ Mark the media design review **PASS** only when every MUST below is satisfied. R
 
 ### Thumbnail
 
-- Evaluate the thumbnail beside current relevant Fab alternatives in the same
-  browse/card context, as well as on its own. It MUST remain salient and clear
-  at card scale; if it visually disappears among those alternatives, media
-  design may still pass its craft checks, but `SALES_OPTIMIZATION_REVIEW` MUST
-  fail.
-- For utilitarian tools, treat low visual complexity as a starting hypothesis,
-  not a universal optimum. Create distinctiveness through figure-ground
-  contrast, scale, hierarchy, whitespace, and composition while preserving
-  clarity and real product evidence.
+- Review the thumbnail by itself at actual Fab card scale. Its primary message
+  and genuine product evidence MUST remain identifiable without zooming.
+- The thumbnail MUST use clear visual hierarchy, figure-ground contrast, and
+  composition while preserving truthful representation and legibility.
 - Communicate one primary buyer value. Keep the product name and category in listing metadata; use the image's limited attention for the most useful buyer outcome.
 - Remain understandable when reduced to the size of a Fab discovery/listing card. Check the real thumbnail at card scale; the primary headline and visual must still be identifiable without zooming.
 - Accurately represent the product and its offer. For a tool or plugin, include genuine product UI or output as visual evidence. Do not substitute a fictional interface, unsupported state, or feature that the product does not provide.
@@ -54,6 +52,10 @@ Mark the media design review **PASS** only when every MUST below is satisfied. R
 
 ## SHOULD
 
+- For utilitarian tools, treat low visual complexity as a starting hypothesis,
+  not a universal optimum. Use hierarchy, contrast, scale, whitespace, and
+  composition to keep the primary message distinct while retaining real product
+  evidence.
 - For a first release or major repositioning, compare two or three materially
   different thumbnail treatments when effort is proportionate. This is an
   operational heuristic, not a research-proven optimal number. Use the same

@@ -18,8 +18,35 @@ it is relevant and sufficiently reliable.
 
 ## Evidence hierarchy
 
-Use evidence in this order. Lower tiers may inform a decision but MUST NOT
-override stronger, applicable evidence above them.
+### Non-overrideable constraints
+
+Evaluate these constraints before comparing optimization evidence. A candidate
+that fails any constraint is blocked and MUST NOT proceed to an evidence-ranked
+sales review. Distinguish current mandatory Fab requirements and policies from
+Fab recommendations or other non-mandatory guidance; the latter may inform
+optimization choices but are not automatically requirements.
+
+```ts
+interface FabNonOverrideableConstraints {
+  currentFabMandatoryRequirementsSatisfied: boolean;
+  truthfulRepresentationSatisfied: boolean;
+  productAndListingConsistencySatisfied: boolean;
+  releaseToolsContractSatisfied: boolean;
+  humanApprovalInvariantPreserved: boolean;
+}
+```
+
+No experiment, sales data, competitor pattern, or heuristic may override a
+current mandatory Fab requirement. Higher sales or click-through evidence never
+justifies misleading product claims. Human Approval invariants cannot be traded
+off for conversion, and the release-tools contract MUST NOT be bypassed for
+sales optimization.
+
+### Evidence ranking among compliant treatments
+
+Only after all non-overrideable constraints pass, use evidence in this order to
+compare lawful, truthful, contract-compliant treatments. The ranking concerns
+optimization evidence; it does not rank or weaken constraints.
 
 ```ts
 type EvidenceTier =
@@ -36,7 +63,7 @@ type EvidenceTier =
 2. This product's observational sales, impression, click, conversion, or other
    listing data, with confounders recorded.
 3. Current Fab direct competitors and nearest substitutes.
-4. Current Fab official requirements and guidance.
+4. Current Fab official recommendations and other non-mandatory guidance.
 5. Peer-reviewed research across other marketplaces or contexts.
 6. Official guidance from other marketplaces.
 7. Operational heuristics in this skill.
@@ -68,7 +95,8 @@ interface FabSalesFunnel {
     trustSignalsPresent: boolean;
   };
   purchase: {
-    priceValueCoherent: boolean;
+    priceValueCoherent: boolean | "NOT_APPLICABLE";
+    priceValueNotApplicableReason?: string;
     buyerRiskReduced: boolean;
   };
 }
@@ -217,7 +245,15 @@ interface FabListingReviewState {
   humanApproval: ReviewState;
 }
 
+interface FabAdvisoryReview {
+  aiReview?: {
+    performed: boolean;
+    findings: string[];
+  };
+}
+
 interface FabSalesOptimizationReview {
+  hardConstraints: FabNonOverrideableConstraints;
   marketContextChecked: boolean;
   currentCompetitorsInspected: boolean;
   buyerJobDefined: boolean;
@@ -225,20 +261,38 @@ interface FabSalesOptimizationReview {
   discoveryFieldsReviewed: boolean;
   thumbnailComparedInCompetitiveContext: boolean;
   cardScaleReviewed: boolean;
-  actualProductEvidencePresent: boolean;
-  strongestOutcomesEarly: boolean;
   listingCopyAligned: boolean;
   pricingContextReviewed: boolean | "NOT_APPLICABLE";
   pricingNotApplicableReason?: string;
   unsupportedClaimsAbsent: boolean;
   evidenceLimitationsRecorded: boolean;
+  funnel: FabSalesFunnel;
 }
 ```
 
-Every applicable sales-review criterion MUST be true for PASS. A fixed or free
-price may be `NOT_APPLICABLE` only with a recorded reason. Missing current
-market inspection, unsupported claims, absent actual product evidence, or poor
-competitive salience is FAIL, not PASS. Keep these states separate:
+`SALES_OPTIMIZATION_REVIEW` is in scope when the user's goal includes sales,
+revenue, conversion, discoverability, click-through, pricing, or competitive
+differentiation. When it is outside scope, it MAY be `NOT_APPLICABLE`; when any
+of those goals is in scope, `NOT_APPLICABLE` MUST NOT be used.
+
+PASS requires every hard-constraint field to be true, every applicable
+top-level review field to be true, and every applicable boolean in `funnel` to
+be true. `NOT_APPLICABLE` is permitted only for a genuinely irrelevant price
+assessment and requires a non-blank reason in the corresponding reason field.
+This applies both to `pricingContextReviewed` and to
+`funnel.purchase.priceValueCoherent`. `unsupportedClaimsAbsent` and
+`evidenceLimitationsRecorded` MUST be true. A missing market inspection,
+unsupported claim, absent product evidence, poor competitive salience, unclear
+limitations, missing trust signal, incoherent price-value fit, or unreduced
+buyer risk is FAIL, not PASS. Strong click or thumbnail-attention results do not
+compensate for a failing evaluation or purchase criterion.
+
+AI review is advisory, not a fifth gate. An AI review may provide findings but
+does not create a formal PASS state and does not satisfy Technical Validation,
+Media Design Review, Sales Optimization Review, or Human Approval. A positive AI
+recommendation is not Human Approval.
+
+Keep the four formal gates separate:
 
 - `MEDIA_TECHNICAL=PASS` does not imply `MEDIA_DESIGN_REVIEW=PASS`.
 - `MEDIA_DESIGN_REVIEW=PASS` does not imply `SALES_OPTIMIZATION_REVIEW=PASS`.
@@ -247,3 +301,46 @@ competitive salience is FAIL, not PASS. Keep these states separate:
 - `SALES_OPTIMIZATION_REVIEW=PASS` does not imply Human Approval.
 - Human Approval rules in [`human-approval.md`](human-approval.md) remain
   unchanged and mandatory.
+
+## Formal state machine
+
+```mermaid
+stateDiagram-v2
+    [*] --> HardConstraints
+
+    HardConstraints --> Blocked: mandatory constraint fails
+    HardConstraints --> EvidenceAssessment: all constraints satisfied
+
+    EvidenceAssessment --> MediaDesignReview
+    MediaDesignReview --> ReviseMedia: FAIL
+    ReviseMedia --> MediaDesignReview
+
+    MediaDesignReview --> SalesOptimizationReview: PASS
+
+    SalesOptimizationReview --> ReviseMarketTreatment: FAIL
+    ReviseMarketTreatment --> EvidenceAssessment
+
+    SalesOptimizationReview --> HumanApproval: PASS
+    SalesOptimizationReview --> HumanApproval: NOT_APPLICABLE when sales optimization out of scope
+
+    HumanApproval --> ReleasePreparation: explicit human approval
+    HumanApproval --> Pending: no explicit human approval
+
+    note right of HardConstraints
+      Mandatory Fab requirements,
+      truthfulness, release contract,
+      and Human Approval invariants
+      cannot be overridden by sales evidence
+    end note
+
+    note right of MediaDesignReview
+      Clear/truthful/readable media
+      may PASS even when relative
+      competitive salience is poor
+    end note
+
+    note right of SalesOptimizationReview
+      PASS = best-supported current treatment,
+      not proven revenue lift
+    end note
+```
