@@ -1,6 +1,6 @@
 # Evidence behind the Fab media standard
 
-This reference separates published or observed evidence from operational choices in [media-design.md](media-design.md). Marketplace studies and platform guidance are informative but do not establish a guaranteed sales outcome for Fab Unreal plugins. URLs and claims below were checked on 2026-09-30; re-check requirements before future submissions.
+This reference separates published or observed evidence from operational choices in [media-design.md](media-design.md) and [sales-optimization.md](sales-optimization.md). Marketplace studies and platform guidance are informative but do not establish a guaranteed sales outcome for Fab Unreal plugins. URLs and claims below were checked on 2026-10-05; re-check requirements before future submissions.
 
 ## Sources
 
@@ -17,9 +17,9 @@ This reference separates published or observed evidence from operational choices
 
 - **Source:** [Marketplace app listing principles](https://developer.atlassian.com/platform/marketplace/marketplace-app-listing-principles/) (last updated 2026-08-24)
 - **Source type:** Other marketplace official
-- **What it actually supports:** Atlassian recommends self-explanatory, high-resolution visuals, screenshots of the real product in its UI, outcome-focused highlights, consistent visual treatment, and readable, high-contrast visuals. It describes product-in-action media as supporting customer evaluation.
-- **What it does NOT establish:** That Atlassian's exact asset specifications, three-highlight rule, or video recommendation applies to Fab, or that any visual choice will raise Fab conversion.
-- **Relevant rules:** Actual UI and behavior; distinct outcome-based gallery items; coherent visual system; legibility; video should show a real problem and solution.
+- **What it actually supports:** Current Atlassian guidance emphasizes discovery, self-explanatory high-impact screenshots of the real product in its UI, outcome-focused listing content, trust, and support. It recommends short problem-solving videos and specifies exactly three highlights and videos under 30 seconds for Atlassian listings.
+- **What it does NOT establish:** That Atlassian's exact asset specifications, three-highlight requirement, or under-30-second video recommendation applies to Fab, or that any visual choice will raise Fab conversion.
+- **Relevant rules:** Inspect buyer discovery, show truthful product evidence, use outcome-based gallery content, and consider a problem-solving video only when motion demonstrates value.
 - **Evidence strength:** High as official guidance for Atlassian's own marketplace; medium as analogous guidance for Fab.
 
 ### Atlassian Marketplace presence guide
@@ -53,17 +53,21 @@ This reference separates published or observed evidence from operational choices
 
 - **Source:** [App Store Asset Best Practices](https://developer.apple.com/app-store/asset-best-practices/)
 - **Source type:** Marketplace official
-- **What it actually supports:** Apple recommends leading with the best features, sequencing screenshots as a coherent story, and using real UI or gameplay in previews. Apple also provides a preview tool to inspect presentation.
+- **What it actually supports:** Apple recommends one clear idea for a first-time visitor, real interface or gameplay, a clear focal point, short text that enhances the visual, legibility, and an asset whose purpose is obvious at a glance in search. It also recommends leading with the strongest features in a cohesive sequence and provides a preview tool to inspect presentation.
 - **What it does NOT establish:** A universal ordering that works for all products or the same display behavior and outcomes on Fab.
 - **Relevant rules:** Put strong value early; use genuine UI/behavior; coherent ordering; preview at placement size.
 - **Evidence strength:** High for Apple's current platform guidance; medium as an analogy for Fab.
 
 - **Source:** [Product Page Optimization](https://developer.apple.com/app-store/product-page-optimization/)
 - **Source type:** Marketplace official
-- **What it actually supports:** Apple enables controlled tests of icons, screenshots, and previews and reports that alternate assets can perform differently; its examples also include a treatment that underperformed the control.
+- **What it actually supports:** Apple's Product Page Optimization allows up to three treatments of icons, screenshots, and previews, randomly shown to users. Treatments can perform better or worse than the control, and some tests can remain inconclusive. Apple advises avoiding overlapping simultaneous tests when attribution would become difficult. Its current analytics guidance describes confidence thresholds and notes low-traffic tests can remain inconclusive.
 - **What it does NOT establish:** That a particular visual change or video increases conversion on Fab. Apple's examples are platform- and product-specific and should not be generalized as an expected uplift.
 - **Relevant rules:** Treat performance claims as testable hypotheses; do not promise that a video or visual treatment improves sales.
 - **Evidence strength:** High for the existence and mechanics of Apple's experiments; low for transfer of any reported result to Fab.
+
+The three-treatment limit describes Apple's test feature; it is not evidence that
+three variants are optimal for Fab or any other marketplace. This guidance
+supports experimentation and careful attribution, not a Fab sales result.
 
 ### Google Play listing guidance and experiments
 
@@ -75,17 +79,17 @@ This reference separates published or observed evidence from operational choices
 - **Evidence strength:** High for Google Play listing requirements and guidance; medium as an analogy for Fab.
 
 - **Source:** [Run A/B tests on your store listing](https://support.google.com/googleplay/android-developer/answer/12053285?hl=en)
-- **Source type:** Marketplace official
-- **What it actually supports:** Google supports controlled experiments on store listing graphics and text and recommends changing one asset at a time to better isolate the cause of performance changes.
-- **What it does NOT establish:** Which asset will win for a Fab Unreal plugin or that any single treatment is universally better.
-- **Relevant rules:** Do not state that video or a particular image style necessarily increases conversion; treat optimization claims as hypotheses.
-- **Evidence strength:** High for Google Play experiment mechanics; medium for the general value of testing; low for transfer of specific outcomes.
+- **Source type:** Other marketplace official
+- **What it actually supports:** Google Play experiments can compare listing graphics and text against the current listing, including icons, feature graphics, screenshots, and descriptions in supported experiment types. It documents variants and install/open metrics.
+- **What it does NOT establish:** Which variant will work for a Fab Unreal product or a Fab-specific causal sales effect.
+- **Relevant rules:** Treat listing treatments as hypotheses that can be tested when a native experiment is available. Google recommends changing one asset at a time where practical and reports when more data is needed; this supports a testing mindset, not a Fab-specific result.
+- **Evidence strength:** High for Google Play experiment mechanics; low for transfer of outcomes to Fab.
 
 ### Chrome Web Store listing guidance
 
 - **Source:** [Creating a great listing page](https://developer.chrome.com/docs/webstore/best-listing)
 - **Source type:** Other marketplace official
-- **What it actually supports:** Chrome's guidance calls for accurate, concise descriptions and consistent branding across screenshots and promotional imagery.
+- **What it actually supports:** Chrome's guidance recommends uncluttered images that work when reduced, limited text, and consistent branding. It also suggests saturated colors where possible; that is Chrome-specific advice, not a universal research finding.
 - **What it does NOT establish:** Fab requirements, screenshot counts, or the conversion effect of any design choice.
 - **Relevant rules:** Truthful product claims; consistent gallery styling; concise copy.
 - **Evidence strength:** High for Chrome Web Store's own guidance; low to medium as an analogy for Fab.
@@ -94,12 +98,19 @@ This reference separates published or observed evidence from operational choices
 
 - **Source:** [Product Page UX: Include Descriptive Text or Graphics for Some Product Images](https://baymard.com/research-articles/product-images-descriptive-text)
 - **Source type:** Usability research
-- **What it actually supports:** Baymard reports in product-page usability testing that people often explore product images early and that images and text each communicate different kinds of information. Explanatory image labels can help communicate abstract or nonvisual attributes.
+- **What it actually supports:** In Baymard's product-page testing, 56% of participants first investigated product images. The research also reports that images and text communicate different kinds of information, and explanatory image labels can help communicate abstract or nonvisual attributes.
 - **What it does NOT establish:** A Fab-specific order, exact text length, or conversion impact for Unreal plugin marketing images. The reported sample and context do not make every percentage universal.
 - **Relevant rules:** Use images as evidence and short labels where visual proof alone cannot explain the buyer outcome; avoid relying on imagery to communicate every detail.
 - **Evidence strength:** Medium for the reported ecommerce usability observations; low for direct transfer to Fab plugins.
 
 ### Peer-reviewed visual complexity research
+
+- **Source:** Kewen Wu, Julita Vassileva, Yuxiang Zhao, Zeinab Noorian, Wesley Waldner, and Ifeoma Adaji, [“Complexity or simplicity? Designing product pictures for advertising in online marketplaces”](https://www.sciencedirect.com/science/article/pii/S0969698915300291), _Journal of Retailing and Consumer Services_ 28 (2016), 17–27. DOI [10.1016/j.jretconser.2015.08.009](https://doi.org/10.1016/j.jretconser.2015.08.009).
+- **Source type:** Peer-reviewed research
+- **What it actually supports:** A lab experiment found that complexity contrast with surrounding marketplace images was positively related to perceptual and conceptual fluency. Complexity contrast interacted with visual complexity; in visually overwhelming conditions, conspicuousness mattered more than adding information.
+- **What it does NOT establish:** Fab click-through or sales uplift, a specific color or layout, or a universal rule that more contrast is always better.
+- **Relevant rules:** Evaluate visual salience relative to current alternatives while preserving enough clarity and product evidence.
+- **Evidence strength:** Direct lab evidence about studied marketplace images and outcomes; low for direct transfer to Fab Unreal listings.
 
 - **Source:** Xuhong Ye, Haoyu Xie, and Linfeng Hu, [“More Complex Is Better? The Impact of Product Image Visual Complexity on Consumer Responses in E-Commerce Pages”](https://onlinelibrary.wiley.com/doi/10.1002/cb.70232), _Journal of Consumer Behaviour_, first published 2026-08-23, DOI [10.1002/cb.70232](https://doi.org/10.1002/cb.70232).
 - **Source type:** Peer-reviewed research
@@ -114,6 +125,13 @@ This reference separates published or observed evidence from operational choices
 - **What it does NOT establish:** That every Unreal plugin is perceived identically as utilitarian, or that low complexity always wins on Fab. It does not test Fab listings or guarantee purchase behavior.
 - **Relevant rules:** Prefer clarity over spectacle for technical tools when the visual goal is explaining function; retain product-specific evidence and context.
 - **Evidence strength:** Medium for the study contexts; low to medium for applying its product-type distinction to Fab plugins.
+
+- **Source:** Yan Wang, Jing Jiang, Xiushuang Gong, and Jie Wang, [“Simple = Authentic: The effect of visually simple package design on perceived brand authenticity and brand choice”](https://www.sciencedirect.com/science/article/abs/pii/S0148296323004368), _Journal of Business Research_ 166 (2023), 114078. DOI [10.1016/j.jbusres.2023.114078](https://doi.org/10.1016/j.jbusres.2023.114078).
+- **Source type:** Peer-reviewed research
+- **What it actually supports:** Eight studies (N=1,941) found that simpler package designs increased perceived brand authenticity under studied conditions; Study 5 linked authenticity to brand choice. Effects were weaker for familiar brands and when complex patterns carried brand identity.
+- **What it does NOT establish:** That package-design findings directly generalize to Fab plugin thumbnails or that simplicity universally maximizes sales.
+- **Relevant rules:** Treat simplicity as context-sensitive evidence, not a universal visual-sales law.
+- **Evidence strength:** Multi-study evidence in package design; low for direct transfer to software marketplace media.
 
 ### Processing fluency theory
 

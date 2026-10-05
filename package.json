@@ -19,7 +19,7 @@
     "lint": "markdownlint **/*.md --ignore node_modules",
     "format:check": "prettier --check .",
     "validate:skill": "node scripts/validate-skill.mjs",
-    "verify": "npm run format:check && npm run lint && npm run validate:skill"
+    "verify": "npm run format:check && npm run lint && npm run validate:skill && node --test tests/*.test.mjs"
   },
   "devDependencies": {
     "compose-agentsmd": "^7.0.1",

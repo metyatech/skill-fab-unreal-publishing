@@ -2,6 +2,13 @@
 
 Use this standard to review the listing thumbnail and gallery for a Fab Unreal Engine tool or plugin. It is an internal quality gate intended to improve fast comprehension, evaluation, and trust. It does not predict a specific conversion rate or guarantee a sale. See [evidence.md](evidence.md) for what the sources support and where this standard adds operational judgment.
 
+For sales, conversion, discoverability, pricing, or competitive positioning,
+also apply [`sales-optimization.md`](sales-optimization.md) as an independent
+review. This file judges whether media works as clear, truthful imagery;
+sales-optimization judges whether the listing is the best-supported
+pre-launch treatment in the current market. Do not duplicate its full checklist
+here.
+
 ## Review outcome
 
 Mark the media design review **PASS** only when every MUST below is satisfied. Record a concrete reason for any SHOULD that is not followed. A technical pass or design-review pass is not Human Approval; see [human-approval.md](human-approval.md).
@@ -10,6 +17,15 @@ Mark the media design review **PASS** only when every MUST below is satisfied. R
 
 ### Thumbnail
 
+- Evaluate the thumbnail beside current relevant Fab alternatives in the same
+  browse/card context, as well as on its own. It MUST remain salient and clear
+  at card scale; if it visually disappears among those alternatives, media
+  design may still pass its craft checks, but `SALES_OPTIMIZATION_REVIEW` MUST
+  fail.
+- For utilitarian tools, treat low visual complexity as a starting hypothesis,
+  not a universal optimum. Create distinctiveness through figure-ground
+  contrast, scale, hierarchy, whitespace, and composition while preserving
+  clarity and real product evidence.
 - Communicate one primary buyer value. Keep the product name and category in listing metadata; use the image's limited attention for the most useful buyer outcome.
 - Remain understandable when reduced to the size of a Fab discovery/listing card. Check the real thumbnail at card scale; the primary headline and visual must still be identifiable without zooming.
 - Accurately represent the product and its offer. For a tool or plugin, include genuine product UI or output as visual evidence. Do not substitute a fictional interface, unsupported state, or feature that the product does not provide.
@@ -18,6 +34,11 @@ Mark the media design review **PASS** only when every MUST below is satisfied. R
 
 ### Gallery
 
+- When optimizing sales, give every image a distinct role in buyer discovery or
+  evaluation, such as a buyer outcome, differentiator, workflow step, or proof.
+  Put the strongest differentiated value first; see
+  [`sales-optimization.md`](sales-optimization.md) for the separate sales
+  review and its funnel criteria.
 - Put the strongest buyer value in the first one to three gallery items. The opening images must make the main use and strongest reason to buy easy to find.
 - Give each image a distinct buyer outcome or proof point. Near-duplicates do not count as distinct gallery value.
 - Use actual product UI, actual output, or a reproducible production behavior as evidence. When showing a workflow, make the causal action and its real result visible (for example, a query and its result, or an action and the focused node it actually selects).
@@ -33,6 +54,14 @@ Mark the media design review **PASS** only when every MUST below is satisfied. R
 
 ## SHOULD
 
+- For a first release or major repositioning, compare two or three materially
+  different thumbnail treatments when effort is proportionate. This is an
+  operational heuristic, not a research-proven optimal number. Use the same
+  card dimensions, competitor grid, and product facts; vary visual treatment or
+  value emphasis. See [`sales-optimization.md`](sales-optimization.md) for the
+  comparison criteria.
+- Use one coherent distinctive accent family when it helps salience. Do not add
+  visual complexity merely to create spectacle; prioritize buyer evaluation.
 - Prefer a user outcome or benefit over a generic product-category label in image headlines. The image and listing title can still name the product.
 - Use short, scannable, high-contrast text. As an operational heuristic, aim for roughly 3–8 headline words when that wording fits the product; this is not a research-proven threshold. Avoid paragraphs, small text, and claims that require reading at full size.
 - Give each gallery image one clear focal point and one proof purpose. Favor focused crops of a real interface over broad, busy Editor screenshots.
