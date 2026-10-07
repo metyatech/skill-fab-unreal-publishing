@@ -21,7 +21,7 @@ This skill provides judgment and workflow guidance; it does not duplicate releas
 
 ## Current scope
 
-The current standard covers thumbnail and gallery design, research-informed sales optimization and current-market review, pricing and listing evaluation, separate technical/media/sales review states, Human Approval, and using release tools at the right boundary. Fab's portal requirements and alternatives can change, so verify current official guidance and current relevant Fab listings before submission. A sales-optimization review identifies the best-supported pre-launch treatment under current evidence and market context; it does not prove or guarantee increased sales or acceptance.
+The current standard covers thumbnail and gallery design, research-informed sales optimization and current-market review, pricing and listing evaluation, thorough documentation and reviewer-accessible demos for demonstrable tools, separate technical/media/sales review states, Human Approval, and using release tools at the right boundary. Fab's portal requirements and alternatives can change, so verify current official guidance and current relevant Fab listings before submission. A sales-optimization review identifies the best-supported pre-launch treatment under current evidence and market context; it does not prove or guarantee increased sales or acceptance.
 
 ## Installation
 
