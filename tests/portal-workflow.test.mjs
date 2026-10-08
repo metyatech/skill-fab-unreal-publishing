@@ -12,16 +12,16 @@ test("workflow distinguishes Additional Files from Media Gallery and accepts doc
   assert.match(text, /media gallery .* is a different feature/);
   assert.match(
     text,
-    /normalized displayed filename alone does not disprove file identity/,
+    /do not accept an unrelated name such as `old_demo\.zip` merely because its size matches/,
   );
-  assert.match(text, /fail closed on role or size contradictions/);
+  assert.match(text, /role or size contradictions fail closed/);
   assert.match(
     text,
     /record each completed upload in `fabportaluploadevidence\.json`/,
   );
   assert.match(
     text,
-    /a visible same-size row alone does not prove which artifact was uploaded/,
+    /a same-size row alone cannot prove which upload created it/,
   );
   assert.match(
     text,
